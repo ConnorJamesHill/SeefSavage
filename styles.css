@@ -355,25 +355,25 @@ body::after {
     position: fixed;
     top: 0;
     left: 0;
-    width: 250px;
-    height: 150px;
+    width: 125px;
+    height: 75px;
     background: 
-        radial-gradient(ellipse 125px 75px at center, rgba(255, 23, 68, 0.7) 0%, rgba(255, 23, 68, 0.3) 40%, transparent 60%);
+        radial-gradient(ellipse 62.5px 37.5px at center, rgba(255, 23, 68, 0.525) 0%, rgba(255, 23, 68, 0.225) 40%, transparent 60%);
     pointer-events: none;
     animation: opacity-pulse 0.9s ease-in-out infinite;
     transform: translate(
-        calc(var(--mouse-x-fast) - 125px),
-        calc(var(--mouse-y-fast) - 75px)
+        calc(var(--mouse-x-fast) - 62.5px),
+        calc(var(--mouse-y-fast) - 37.5px)
     );
     z-index: 5;
 }
 
 @keyframes opacity-pulse {
     0%, 100% { 
-        opacity: 0.6;
+        opacity: 0.45;
     }
     50% { 
-        opacity: 1;
+        opacity: 0.75;
     }
 }
 
