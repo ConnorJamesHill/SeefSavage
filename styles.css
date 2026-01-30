@@ -188,7 +188,8 @@ body::after {
     box-shadow: 
         var(--shadow-2xl),
         var(--shadow-red),
-        inset 0 0 20px rgba(0, 0, 0, 0.8);
+        inset 0 0 20px rgba(0, 0, 0, 0.8),
+        0 0 0 8px rgba(0, 0, 0, 0.5);
     object-fit: cover;
     margin-bottom: var(--spacing-lg);
     transition: all 0.3s ease;
@@ -196,16 +197,38 @@ body::after {
     z-index: 10;
     background: var(--surface);
     filter: contrast(1.1) saturate(1.2);
+    animation: border-pulse 3s ease-in-out infinite;
+}
+
+@keyframes border-pulse {
+    0%, 100% {
+        border-color: var(--primary-color);
+        box-shadow: 
+            var(--shadow-2xl),
+            0 0 20px rgba(255, 23, 68, 0.5),
+            inset 0 0 20px rgba(0, 0, 0, 0.8),
+            0 0 0 8px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        border-color: var(--primary-hover);
+        box-shadow: 
+            var(--shadow-2xl),
+            0 0 40px rgba(255, 23, 68, 0.8),
+            inset 0 0 20px rgba(0, 0, 0, 0.8),
+            0 0 0 8px rgba(0, 0, 0, 0.5);
+    }
 }
 
 .profile-image:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) rotate(-2deg);
     border-color: var(--primary-hover);
     box-shadow: 
         var(--shadow-2xl),
         var(--shadow-red-intense),
-        inset 0 0 20px rgba(0, 0, 0, 0.8);
+        inset 0 0 20px rgba(0, 0, 0, 0.8),
+        0 0 0 8px rgba(255, 23, 68, 0.2);
     filter: contrast(1.2) saturate(1.3) brightness(1.1);
+    animation: none;
 }
 
 .creator-name {
@@ -220,9 +243,40 @@ body::after {
     text-shadow: 
         0 0 10px rgba(255, 23, 68, 0.8),
         0 0 20px rgba(255, 23, 68, 0.5),
+        0 0 40px rgba(255, 23, 68, 0.3),
         2px 2px 0px rgba(0, 0, 0, 0.8),
         4px 4px 8px rgba(0, 0, 0, 1);
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.9));
+    animation: glitch-text 8s infinite;
+}
+
+@keyframes glitch-text {
+    0%, 90%, 100% { 
+        transform: translate(0);
+        text-shadow: 
+            0 0 10px rgba(255, 23, 68, 0.8),
+            0 0 20px rgba(255, 23, 68, 0.5),
+            0 0 40px rgba(255, 23, 68, 0.3),
+            2px 2px 0px rgba(0, 0, 0, 0.8),
+            4px 4px 8px rgba(0, 0, 0, 1);
+    }
+    91% { 
+        transform: translate(-2px, 2px);
+        text-shadow: 
+            -2px 0 rgba(255, 23, 68, 0.8),
+            2px 0 rgba(0, 255, 255, 0.5),
+            0 0 20px rgba(255, 23, 68, 0.5);
+    }
+    92% { 
+        transform: translate(2px, -2px);
+        text-shadow: 
+            2px 0 rgba(255, 23, 68, 0.8),
+            -2px 0 rgba(0, 255, 255, 0.5),
+            0 0 20px rgba(255, 23, 68, 0.5);
+    }
+    93% { 
+        transform: translate(0);
+    }
 }
 
 .tagline {
@@ -280,6 +334,27 @@ body::after {
     z-index: 10;
     letter-spacing: 0.03em;
     text-transform: uppercase;
+    text-shadow: 
+        0 0 5px rgba(255, 23, 68, 0.5),
+        2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+/* Bracket decoration */
+.section-title::before,
+.section-title::after {
+    content: '//';
+    color: var(--primary-color);
+    font-weight: var(--font-weight-black);
+    opacity: 0.6;
+    font-size: 0.8em;
+}
+
+.section-title::before {
+    margin-right: 0.5em;
+}
+
+.section-title::after {
+    margin-left: 0.5em;
 }
 
 .youtube-title {
@@ -297,6 +372,31 @@ body::after {
         3px 3px 6px rgba(0, 0, 0, 1);
 }
 
+/* Underline effect */
+.youtube-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    box-shadow: 0 0 10px rgba(255, 23, 68, 0.8);
+    animation: underline-pulse 2s ease-in-out infinite;
+}
+
+@keyframes underline-pulse {
+    0%, 100% {
+        width: 100px;
+        opacity: 0.6;
+    }
+    50% {
+        width: 150px;
+        opacity: 1;
+    }
+}
+
 .video-container {
     position: relative;
     width: 100%;
@@ -307,11 +407,51 @@ body::after {
     box-shadow: 
         0 0 0 2px var(--primary-color),
         var(--shadow-2xl),
-        var(--shadow-red);
+        var(--shadow-red),
+        0 0 0 12px rgba(0, 0, 0, 0.6);
     background-color: var(--secondary-color);
     transition: all 0.3s ease;
     z-index: 10;
     border: 2px solid rgba(255, 23, 68, 0.5);
+}
+
+/* Corner brackets effect */
+.video-container::before,
+.video-container::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--primary-color);
+    z-index: 10;
+    opacity: 0.8;
+}
+
+.video-container::before {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+    animation: corner-glow 2s ease-in-out infinite;
+}
+
+.video-container::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+    animation: corner-glow 2s ease-in-out infinite 1s;
+}
+
+@keyframes corner-glow {
+    0%, 100% {
+        opacity: 0.8;
+        filter: drop-shadow(0 0 5px rgba(255, 23, 68, 0.5));
+    }
+    50% {
+        opacity: 1;
+        filter: drop-shadow(0 0 10px rgba(255, 23, 68, 1));
+    }
 }
 
 .video-container:hover {
@@ -319,8 +459,14 @@ body::after {
     box-shadow: 
         0 0 0 2px var(--primary-hover),
         var(--shadow-2xl),
-        var(--shadow-red-intense);
+        var(--shadow-red-intense),
+        0 0 0 12px rgba(255, 23, 68, 0.2);
     border-color: var(--primary-color);
+}
+
+.video-container:hover::before,
+.video-container:hover::after {
+    border-color: var(--primary-hover);
 }
 
 .video-container iframe {
@@ -373,7 +519,8 @@ body::after {
         0 8px 16px rgba(0, 0, 0, 0.8),
         var(--shadow-red),
         inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+        0 0 0 1px var(--primary-color);
     position: relative;
     overflow: hidden;
     font-weight: var(--font-weight-black);
@@ -381,6 +528,26 @@ body::after {
     border: 2px solid var(--primary-color);
     transition: all 0.2s ease;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    animation: button-intensity 3s ease-in-out infinite;
+}
+
+@keyframes button-intensity {
+    0%, 100% {
+        box-shadow: 
+            0 8px 16px rgba(0, 0, 0, 0.8),
+            0 0 20px rgba(255, 23, 68, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+            0 0 0 1px var(--primary-color);
+    }
+    50% {
+        box-shadow: 
+            0 8px 16px rgba(0, 0, 0, 0.8),
+            0 0 30px rgba(255, 23, 68, 0.8),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+            0 0 0 1px var(--primary-hover);
+    }
 }
 
 .btn-youtube-primary::before {
@@ -390,7 +557,7 @@ body::after {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transition: left 0.5s ease;
 }
 
@@ -449,13 +616,25 @@ body::after {
     padding: 1.125rem 1.75rem;
     border: 2px solid var(--border);
     transition: all 0.2s ease;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-md), inset 0 0 0 1px rgba(255, 23, 68, 0.1);
     font-weight: var(--font-weight-bold);
     position: relative;
     overflow: hidden;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border-radius: var(--radius-sm);
+}
+
+/* Diagonal stripe effect */
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary-color), transparent);
+    transition: all 0.3s ease;
 }
 
 .social-link::after {
@@ -469,13 +648,19 @@ body::after {
     transition: left 0.4s ease;
 }
 
+.social-link:hover::before {
+    width: 100%;
+    opacity: 0.1;
+}
+
 .social-link:hover::after {
     left: 100%;
 }
 
 .social-link:hover {
     transform: translateX(8px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-xl), inset 0 0 0 1px rgba(255, 23, 68, 0.3);
+    border-color: rgba(255, 23, 68, 0.3);
 }
 
 .social-link:active {
