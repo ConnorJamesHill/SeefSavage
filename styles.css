@@ -27,8 +27,8 @@
     /* Mouse tracking for glows */
     --mouse-x: 50%;
     --mouse-y: 50%;
-    --mouse-x-fast: 50%;
-    --mouse-y-fast: 50%;
+    --mouse-x-fast: 0px;
+    --mouse-y-fast: 0px;
     
     /* Social Media Colors - Darkened */
     --youtube: #ff1744;

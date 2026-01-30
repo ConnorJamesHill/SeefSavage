@@ -210,36 +210,43 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
  * Makes the big red pulsing glows slowly follow the mouse
  */
 function initMouseTracking() {
-    let mouseX = 0;
-    let mouseY = 0;
-    let currentX = 0;
-    let currentY = 0;
+    let mouseXPercent = 50;
+    let mouseYPercent = 50;
+    let mouseXPx = 0;
+    let mouseYPx = 0;
+    let currentX = 50;
+    let currentY = 50;
     let fastX = 0;
     let fastY = 0;
 
     // Track mouse position
     document.addEventListener('mousemove', (e) => {
-        mouseX = (e.clientX / window.innerWidth) * 100;
-        mouseY = (e.clientY / window.innerHeight) * 100;
+        // Percentages for top glows
+        mouseXPercent = (e.clientX / window.innerWidth) * 100;
+        mouseYPercent = (e.clientY / window.innerHeight) * 100;
+        
+        // Actual pixel position for middle pulse
+        mouseXPx = e.clientX;
+        mouseYPx = e.clientY;
     });
 
     // Smoothly animate the glow positions
     function updateGlowPositions() {
-        // Slow lerp for top glows
+        // Slow lerp for top glows (percentage based)
         const smoothing = 0.02; // Lower = slower, smoother
-        currentX += (mouseX - currentX) * smoothing;
-        currentY += (mouseY - currentY) * smoothing;
+        currentX += (mouseXPercent - currentX) * smoothing;
+        currentY += (mouseYPercent - currentY) * smoothing;
 
-        // Fast lerp for middle pulse - twice as fast
+        // Fast lerp for middle pulse - twice as fast (pixel based)
         const fastSmoothing = 0.04; // Twice as fast
-        fastX += (mouseX - fastX) * fastSmoothing;
-        fastY += (mouseY - fastY) * fastSmoothing;
+        fastX += (mouseXPx - fastX) * fastSmoothing;
+        fastY += (mouseYPx - fastY) * fastSmoothing;
 
         // Update CSS custom properties
         document.documentElement.style.setProperty('--mouse-x', `${currentX}%`);
         document.documentElement.style.setProperty('--mouse-y', `${currentY}%`);
-        document.documentElement.style.setProperty('--mouse-x-fast', `${fastX}%`);
-        document.documentElement.style.setProperty('--mouse-y-fast', `${fastY}%`);
+        document.documentElement.style.setProperty('--mouse-x-fast', `${fastX}px`);
+        document.documentElement.style.setProperty('--mouse-y-fast', `${fastY}px`);
 
         requestAnimationFrame(updateGlowPositions);
     }
