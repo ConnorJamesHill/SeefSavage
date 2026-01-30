@@ -69,12 +69,13 @@ body {
     color: var(--text-primary);
     background: #0a0a0a;
     background-image: 
-        url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10,50 Q30,20 50,40 T90,60 T130,50 T170,70' stroke='rgba(15,40,25,0.4)' stroke-width='2' fill='none'/%3E%3Cpath d='M0,100 Q40,80 80,110 T160,100' stroke='rgba(15,40,25,0.3)' stroke-width='1.5' fill='none'/%3E%3Cpath d='M50,0 Q70,40 60,80 T80,140 T70,200' stroke='rgba(15,40,25,0.35)' stroke-width='2' fill='none'/%3E%3Cpath d='M120,10 Q140,50 130,90 T150,150' stroke='rgba(15,40,25,0.25)' stroke-width='1.5' fill='none'/%3E%3Cpath d='M30,150 Q60,130 90,160 T150,180' stroke='rgba(15,40,25,0.3)' stroke-width='1.8' fill='none'/%3E%3C/svg%3E"),
-        url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,150 Q50,100 100,150 T200,150 T300,180' stroke='rgba(10,30,20,0.5)' stroke-width='3' fill='none'/%3E%3Cpath d='M150,0 Q120,80 150,150 T180,280' stroke='rgba(10,30,20,0.4)' stroke-width='2.5' fill='none'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg width='250' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40,30 Q60,30 60,50 Q60,70 40,70 Q20,70 20,90 Q20,110 40,110' stroke='rgba(15,40,25,0.4)' stroke-width='2' fill='none'/%3E%3Cpath d='M140,80 Q160,80 160,100 Q160,120 140,120 Q120,120 120,140 Q120,160 140,160' stroke='rgba(15,40,25,0.35)' stroke-width='2' fill='none'/%3E%3Cpath d='M90,150 Q110,150 110,170 Q110,190 90,190 Q70,190 70,210 Q70,230 90,230' stroke='rgba(15,40,25,0.3)' stroke-width='1.8' fill='none'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg width='180' height='180' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30,20 Q50,20 50,40 Q50,60 30,60 Q10,60 10,80 Q10,100 30,100 Q50,100 50,120' stroke='rgba(10,30,20,0.5)' stroke-width='2.5' fill='none'/%3E%3Cpath d='M120,50 Q140,50 140,70 Q140,90 120,90 Q100,90 100,110 Q100,130 120,130' stroke='rgba(10,30,20,0.4)' stroke-width='2' fill='none'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50,40 Q80,40 80,70 Q80,100 50,100 Q20,100 20,130 Q20,160 50,160 Q80,160 80,190' stroke='rgba(15,40,25,0.25)' stroke-width='3' fill='none'/%3E%3Cpath d='M200,100 Q230,100 230,130 Q230,160 200,160 Q170,160 170,190 Q170,220 200,220' stroke='rgba(10,30,20,0.35)' stroke-width='2.5' fill='none'/%3E%3C/svg%3E"),
         radial-gradient(circle at 20% 50%, rgba(255, 23, 68, 0.03) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(255, 23, 68, 0.02) 0%, transparent 50%);
-    background-size: 200px 200px, 300px 300px, 100% 100%, 100% 100%;
-    background-position: 0 0, 100px 100px, 0 0, 0 0;
+    background-size: 250px 250px, 180px 180px, 300px 300px, 100% 100%, 100% 100%;
+    background-position: 0 0, 120px 80px, 50px 150px, 0 0, 0 0;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
