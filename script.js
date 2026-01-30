@@ -214,6 +214,8 @@ function initMouseTracking() {
     let mouseY = 0;
     let currentX = 0;
     let currentY = 0;
+    let fastX = 0;
+    let fastY = 0;
 
     // Track mouse position
     document.addEventListener('mousemove', (e) => {
@@ -223,14 +225,21 @@ function initMouseTracking() {
 
     // Smoothly animate the glow positions
     function updateGlowPositions() {
-        // Slow lerp (linear interpolation) for smooth following
+        // Slow lerp for top glows
         const smoothing = 0.02; // Lower = slower, smoother
         currentX += (mouseX - currentX) * smoothing;
         currentY += (mouseY - currentY) * smoothing;
 
+        // Fast lerp for middle pulse - twice as fast
+        const fastSmoothing = 0.04; // Twice as fast
+        fastX += (mouseX - fastX) * fastSmoothing;
+        fastY += (mouseY - fastY) * fastSmoothing;
+
         // Update CSS custom properties
         document.documentElement.style.setProperty('--mouse-x', `${currentX}%`);
         document.documentElement.style.setProperty('--mouse-y', `${currentY}%`);
+        document.documentElement.style.setProperty('--mouse-x-fast', `${fastX}%`);
+        document.documentElement.style.setProperty('--mouse-y-fast', `${fastY}%`);
 
         requestAnimationFrame(updateGlowPositions);
     }

@@ -27,6 +27,8 @@
     /* Mouse tracking for glows */
     --mouse-x: 50%;
     --mouse-y: 50%;
+    --mouse-x-fast: 50%;
+    --mouse-y-fast: 50%;
     
     /* Social Media Colors - Darkened */
     --youtube: #ff1744;
@@ -347,7 +349,7 @@ body::after {
     border-bottom: 1px solid rgba(255, 23, 68, 0.2);
 }
 
-/* Aggressive red gradient background - SMALLER & FASTER - FOLLOWS MOUSE */
+/* Aggressive red gradient background - SMALLER & FASTER - FOLLOWS MOUSE INDEPENDENTLY */
 .youtube-section::before {
     content: '';
     position: absolute;
@@ -356,10 +358,9 @@ body::after {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(ellipse 250px 150px at var(--mouse-x) var(--mouse-y), rgba(255, 23, 68, 0.3) 0%, rgba(255, 23, 68, 0.1) 40%, transparent 60%);
+        radial-gradient(ellipse 250px 150px at var(--mouse-x-fast) var(--mouse-y-fast), rgba(255, 23, 68, 0.3) 0%, rgba(255, 23, 68, 0.1) 40%, transparent 60%);
     pointer-events: none;
     animation: intensity-pulse 0.9s ease-in-out infinite;
-    transition: background 0.5s ease-out;
 }
 
 @keyframes intensity-pulse {
