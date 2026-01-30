@@ -105,6 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
             socialLinksContainer.appendChild(link);
         });
     }
+
+    // Mouse tracking for pulsing glows
+    initMouseTracking();
 });
 
 /**
@@ -198,6 +201,42 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+/* ===================================
+   MOUSE TRACKING FOR PULSING GLOWS
+   =================================== */
+
+/**
+ * Makes the big red pulsing glows slowly follow the mouse
+ */
+function initMouseTracking() {
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    // Track mouse position
+    document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth) * 100;
+        mouseY = (e.clientY / window.innerHeight) * 100;
+    });
+
+    // Smoothly animate the glow positions
+    function updateGlowPositions() {
+        // Slow lerp (linear interpolation) for smooth following
+        const smoothing = 0.02; // Lower = slower, smoother
+        currentX += (mouseX - currentX) * smoothing;
+        currentY += (mouseY - currentY) * smoothing;
+
+        // Update CSS custom properties
+        document.documentElement.style.setProperty('--mouse-x', `${currentX}%`);
+        document.documentElement.style.setProperty('--mouse-y', `${currentY}%`);
+
+        requestAnimationFrame(updateGlowPositions);
+    }
+
+    updateGlowPositions();
+}
 
 /* ===================================
    CONSOLE MESSAGE (OPTIONAL)

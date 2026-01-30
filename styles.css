@@ -24,6 +24,10 @@
     --accent-red: #ff1744;
     --accent-gradient: linear-gradient(135deg, #ff1744 0%, #c50e29 100%);
     
+    /* Mouse tracking for glows */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    
     /* Social Media Colors - Darkened */
     --youtube: #ff1744;
     --tiktok: #fe2c55;
@@ -147,31 +151,41 @@ body::after {
     overflow: hidden;
 }
 
-/* Red glow effects - MAXIMUM INTENSITY */
+/* Red glow effects - MAXIMUM INTENSITY - FOLLOWS MOUSE */
 .hero::before {
     content: '';
     position: absolute;
-    top: -30%;
-    right: 10%;
+    top: 0;
+    left: 0;
     width: 600px;
     height: 600px;
     background: radial-gradient(circle, rgba(255, 23, 68, 0.5) 0%, rgba(255, 23, 68, 0.15) 40%, transparent 70%);
     filter: blur(80px);
     animation: pulse-glow 2s ease-in-out infinite;
     pointer-events: none;
+    transform: translate(
+        calc(var(--mouse-x) - 50%),
+        calc(var(--mouse-y) - 50%)
+    );
+    transition: transform 0.3s ease-out;
 }
 
 .hero::after {
     content: '';
     position: absolute;
-    bottom: -20%;
-    left: 10%;
+    bottom: 0;
+    right: 0;
     width: 550px;
     height: 550px;
     background: radial-gradient(circle, rgba(255, 23, 68, 0.45) 0%, rgba(255, 23, 68, 0.12) 40%, transparent 70%);
     filter: blur(70px);
     animation: pulse-glow 2.5s ease-in-out infinite reverse;
     pointer-events: none;
+    transform: translate(
+        calc((var(--mouse-x) - 50%) * -0.7),
+        calc((var(--mouse-y) - 50%) * -0.7)
+    );
+    transition: transform 0.3s ease-out;
 }
 
 @keyframes pulse-glow {
@@ -310,7 +324,7 @@ body::after {
     border-bottom: 1px solid rgba(255, 23, 68, 0.2);
 }
 
-/* Aggressive red gradient background - MAXIMUM INTENSITY */
+/* Aggressive red gradient background - MAXIMUM INTENSITY - FOLLOWS MOUSE */
 .youtube-section::before {
     content: '';
     position: absolute;
@@ -319,9 +333,10 @@ body::after {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(ellipse 1000px 600px at 50% 50%, rgba(255, 23, 68, 0.3) 0%, rgba(255, 23, 68, 0.1) 40%, transparent 60%);
+        radial-gradient(ellipse 1000px 600px at var(--mouse-x) var(--mouse-y), rgba(255, 23, 68, 0.3) 0%, rgba(255, 23, 68, 0.1) 40%, transparent 60%);
     pointer-events: none;
     animation: intensity-pulse 1.8s ease-in-out infinite;
+    transition: background 0.5s ease-out;
 }
 
 @keyframes intensity-pulse {
