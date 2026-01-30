@@ -352,15 +352,20 @@ body::after {
 /* Aggressive red gradient background - TINY & VIBRANT - OPACITY ONLY - FOLLOWS MOUSE FAST */
 .youtube-section::before {
     content: '';
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 250px;
+    height: 150px;
     background: 
-        radial-gradient(ellipse 125px 75px at var(--mouse-x-fast) var(--mouse-y-fast), rgba(255, 23, 68, 0.7) 0%, rgba(255, 23, 68, 0.3) 40%, transparent 60%);
+        radial-gradient(ellipse 125px 75px at center, rgba(255, 23, 68, 0.7) 0%, rgba(255, 23, 68, 0.3) 40%, transparent 60%);
     pointer-events: none;
     animation: opacity-pulse 0.9s ease-in-out infinite;
+    transform: translate(
+        calc(var(--mouse-x-fast) - 125px),
+        calc(var(--mouse-y-fast) - 75px)
+    );
+    z-index: 5;
 }
 
 @keyframes opacity-pulse {
