@@ -6,7 +6,7 @@
  * Channel ID for SeefSavage
  * This is used to fetch the latest videos
  */
-const CHANNEL_ID = 'UC7Lq3HNU8lkognng0m93B7Q';
+const CHANNEL_ID = 'UCwqQP1iu8Jpq7ECpJc9lbgg';
 
 /* ===================================
    SOCIAL LINKS CONFIGURATION
